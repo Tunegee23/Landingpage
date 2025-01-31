@@ -1,4 +1,5 @@
 import React from "react";
+import  { useState } from 'react';
 import arrow from "../Image/forward.png";
 import sofa from "../Image/sofa.jpeg";
 import Card from "../component/Card.jsx";
@@ -10,31 +11,44 @@ import image from "../Image/image.png";
 import chair from "../Image/Chair.png";
 import video from "../video/video.mp4";
 import cart from "../Image/cart.png"
+import menu from "../Image/menuBar.png"
 
-function Home() {
-  const [email, setEmail ] = usestate("");
+function Home()  {
+
+
+  const [email, setEmail ] = useState("");
 
   const handleChange = (event) => {
      setEmail(event.target.value)
   }
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log( "sumbimtted email:", email)
+
+   }
   return (
     <div>
       <div className="bg-[#98D8EF]">
 
         <div className="  flex items-center justify-between text-white p-4">
+          
           <h1 className=" font-OpenSans font-bold text-[#002B36] text-[25px]">
-            .WGA
-          </h1>
-          <div className="flex items-center">
-            <ul className="text-[#002B36] text-[13px] font-OpenSans hidden md:flex space-x-4">
+            .WGA</h1>
+
+          <div className=" justify-items-center">
+            <ul className="text-[#002B36]  text-[13px]  font-OpenSans hidden sm:flex space-x-4 ">
               <li>Home</li>
               <li>About Us</li>
-              <li>Product</li>
+              <li>Products</li>
+              <li>Contact</li>
             </ul>
           </div>
 
-          <img src={cart} className="h-[20px] ml-4"  alt=""></img>
+          <button className="sm:hidden">
+              <img src={menu} className="h-[30px] sm:hidden " alt=""></img>
+          </button>
 
+          <img src={cart} className="h-[20px] hidden sm:flex  m-0 "  alt=""></img>
           
         </div>
 
@@ -68,7 +82,7 @@ function Home() {
           <img src={shelf} alt="" className="w-1/3 object-cover rounded-lg" />
         </div>
         <div className="justify-items-center">
-        <p className=" font-OpenSans  sm:text-center  mt-[2rem] md:text-[20px]">
+        <p className=" font-OpenSans  sm:text-center mt-[2rem] md:text-[18px]">
           Welcome! Our passion for beautiful wood furniture drives us to offer
           exceptional quality at affordable prices. We're dedicated to enhancing
           your home with stunning pieces. Thank you for choosing us.
@@ -76,8 +90,8 @@ function Home() {
         </div>
         
 
-        <div className="mt-[2rem]">
-          <img src={image} alt="" />
+        <div className="mt-[2rem] w-full">
+          <img src={image}  alt="" />
         </div>
         <p className="text-center font-bold font-OpenSans text-[30px] mt-[1rem]">
           Benefits
@@ -110,11 +124,11 @@ function Home() {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <h2 className="text-white text-[20px] font-bold font-OpenSans">Stay Updated</h2>
           
-            {/* <div  className="absolute w-[250px] top-1/4 left-1/2 mt-[3rem] transform -translate-x-1/2 -translate-y-1/2 h-[40px] border-[1px] rounded-[10px] bg-transparent">
-              <input type="email" placeholder="enter enail" value={email} onChange={handleChange} />
-            </div> */}
+            <div  className="absolute md:w-[350px] top-1/4 left-1/2 mt-[3rem] transform -translate-x-1/2 -translate-y-1/2 h-[40px] border-[1px] rounded-[10px] bg-transparent">
+              <input type="email" placeholder="enter email" className="flex-grow bg-transparent font-OpenSans outline-none focus:ring-0 text-white p-1" value={email} onChange={handleChange} />
+            </div>
             
-            <button className="absolute w-[100px] top-1/5 left-1/2 mt-[6rem] transform -translate-x-1/2 -translate-y-1/2 h-[40px] border-[1px] bg-white rounded-[10px]">Subscribe
+            <button type="submit" onSubmit={handleSubmit} className="absolute w-[100px] top-1/5 left-1/2 mt-[5rem] transform font-OpenSans -translate-x-1/2 -translate-y-1/2 h-[40px] border-[1px] bg-white rounded-[10px]">Subscribe
             </button>
 
           </div>
